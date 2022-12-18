@@ -18,17 +18,17 @@ from torch import Tensor, nn
 #      - `forward()` with `inputs` as input parameter, perform ReLU and DropOut on the fully-connected layer followed by the output layer
 
 
-# class PytorchRegression(nn.Module):
-#     def __init__(self, num_features):
-#         super(PytorchRegression, self).__init__()
+class PytorchRegression(nn.Module):
+    def __init__(self, num_features):
+        super(PytorchRegression, self).__init__()
         
-#         self.layer_1 = nn.Linear(num_features, 128)
-#         self.layer_out = nn.Linear(128, 1)
+        self.layer_1 = nn.Linear(num_features, 128)
+        self.layer_out = nn.Linear(128, 1)
 
-#     def forward(self, x):
-#         x = F.dropout(F.relu(self.layer_1(x)))
-#         x = self.layer_out(x)
-#         return (x)
+    def forward(self, x):
+        x = F.dropout(F.relu(self.layer_1(x)))
+        x = self.layer_out(x)
+        return (x)
     
     
 
@@ -106,8 +106,8 @@ class PytorchMultiClass(nn.Module):
     def __init__(self, num_features):
         super(PytorchMultiClass, self).__init__()
         
-        self.layer_1 = nn.Linear(num_features, 32)
-        self.layer_out = nn.Linear(32, 4)
+        self.layer_1 = nn.Linear(num_features, 500)
+        self.layer_out = nn.Linear(500, 103)
 
     def forward(self, x):
         x = F.dropout(F.relu(self.layer_1(x)), training=self.training)
