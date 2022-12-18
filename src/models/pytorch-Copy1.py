@@ -7,6 +7,32 @@ from torch.utils.data import Dataset, DataLoader
 from torch import Tensor, nn
 
 
+
+# Class called `PytorchRegression` that inherits from `nn.Module` with:
+
+#  - `num_features` as input parameter
+#  - attributes:
+#      - `layer_1`: fully-connected layer with 128 neurons
+#      - `layer_out`: fully-connected layer with 1 neurons
+#  - methods:
+#      - `forward()` with `inputs` as input parameter, perform ReLU and DropOut on the fully-connected layer followed by the output layer
+
+
+class PytorchRegression(nn.Module):
+    def __init__(self, num_features):
+        super(PytorchRegression, self).__init__()
+        
+        self.layer_1 = nn.Linear(num_features, 128)
+        self.layer_out = nn.Linear(128, 1)
+
+    def forward(self, x):
+        x = F.dropout(F.relu(self.layer_1(x)))
+        x = self.layer_out(x)
+        return (x)
+    
+    
+
+    
     
     
 # get_device()    
@@ -74,20 +100,18 @@ class PytorchDataset(Dataset):
         return Tensor(np.array(data))
     
 
-
-    
     
     
 class PytorchMultiClass(nn.Module):
     def __init__(self, num_features):
         super(PytorchMultiClass, self).__init__()
         
-        self.layer_1 = nn.Linear(num_features, 50)
-        self.layer_out = nn.Linear(50, 104)
+        self.layer_1 = nn.Linear(num_features, 500)
+        self.layer_out = nn.Linear(500, 104)
 
     def forward(self, x):
         x = F.dropout(F.relu(self.layer_1(x)), training=self.training)
-        return self.layer_out(x) 
+        return self.layer_out(x)   
     
     
     
