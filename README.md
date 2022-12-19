@@ -1,6 +1,15 @@
 beer-type-prediction
 ==============================
 
+OLD:
+docker run  -dit --rm --name beer-type-prediction -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v /Users/nommesen/Dropbox/Mac/Documents/projectrepos/beer-type-prediction:/home/jovyan/work pytorch-notebook:latest
+
+NEW:
+docker run -d --rm --name beer-type-prediction -p 8888:8888 -e PYTHONPATH=/wd -e JUPYTER_ENABLE_LAB=yes -v /Users/nommesen/Dropbox/Mac/Documents/projectrepos/beer-type-prediction:/wd -w /wd pytorch-notebook:latest
+
+docker logs --tail 50 beer-type-prediction
+
+
 A short description of the project.
 
 Project Organization
