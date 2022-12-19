@@ -82,8 +82,8 @@ class PytorchMultiClass(nn.Module):
     def __init__(self, num_features):
         super(PytorchMultiClass, self).__init__()
         
-        self.layer_1 = nn.Linear(num_features, 50)
-        self.layer_out = nn.Linear(50, 104)
+        self.layer_1 = nn.Linear(num_features, 5)
+        self.layer_out = nn.Linear(5, 104)
 
     def forward(self, x):
         x = F.dropout(F.relu(self.layer_1(x)), training=self.training)
